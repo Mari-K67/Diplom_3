@@ -3,7 +3,6 @@ import allure
 from locators.password_recovery_locators import PasswordRecoveryLocators
 from pages.password_recovery_page import PasswordRecoveryPage
 from data import Url
-#python -B -m pytest tests/test_password_recovery.py
 
 class TestPasswordRecovery:
     @allure.title('Переход на страницу восстановления пароля по кнопке «Восстановить пароль»')
@@ -16,7 +15,7 @@ class TestPasswordRecovery:
                         """):
             page.open_recovery_password_page_with_email_field()
 
-        assert page.get_current_url() == Url.forgot_password_url
+        assert page.get_current_url() == Url.FORGOT_PASSWORD_URL
 
     @allure.title('Ввод почты и клик по кнопке «Восстановить»')
     def test_open_recovery_password_page_with_password_field(self, driver, create_user): 
@@ -37,7 +36,7 @@ class TestPasswordRecovery:
         with allure.step('5. ожидание перехода на новую страницу (пока поле пароль не станет видимым)'):    
             page.wait_element_visibility(PasswordRecoveryLocators.password_field)
             
-        assert page.get_current_url() == Url.reset_password_url
+        assert page.get_current_url() == Url.RESET_PASSWORD_URL
 
     @allure.title('Клик по кнопке показать/скрыть пароль делает поле активным — подсвечивае его')
     def test_click_to_eye_button(self, driver, create_user): 

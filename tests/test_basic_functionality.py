@@ -4,7 +4,6 @@ from locators.basic_functionality_locators import BasicFunctionalityLocators
 from pages.basic_functionality_page import BasicFunctionalityPage
 from locators.login_locators import LoginLocators
 from data import Url
-#python -B -m pytest tests/test_basic_functionality.py
 
 class TestBasicFunctionality:
     @allure.title('Переход на главную страницу по клику на «Конструктор»')
@@ -17,7 +16,7 @@ class TestBasicFunctionality:
         with allure.step('2. кликнуть на раздел "Конструктор"'):
             page.click(BasicFunctionalityLocators.constructor_chapter)
 
-        assert page.get_current_url() == f'{Url.main_url}/'
+        assert page.get_current_url() == f'{Url.MAIN_URL}/'
 
     @allure.title('Переход на страницу ленты заказов по клику на «Лента заказов»')
     def test_open_order_feed_chapter(self, driver): 
@@ -26,7 +25,7 @@ class TestBasicFunctionality:
         with allure.step('1. кликнуть на раздел "Лента заказов"'):
             page.click(BasicFunctionalityLocators.order_feed_chapter)
 
-        assert page.get_current_url() == Url.order_feed_page_url
+        assert page.get_current_url() == Url.ORDER_FEED_PAGE_URL
 
     @allure.title('При клике на ингредиент, появляется всплывающее окно c деталями')
     @pytest.mark.parametrize("ingredient", [

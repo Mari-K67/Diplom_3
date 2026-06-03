@@ -17,7 +17,7 @@ def driver(request):
     else:
         raise ValueError(f"Неподдерживаемый браузер: {request.param}")
 
-    driver.get(Url.main_url)
+    driver.get(Url.MAIN_URL)
 
     yield driver
 
@@ -27,12 +27,12 @@ def driver(request):
 
 @pytest.fixture
 def create_user():
-    body = UserBody.user_body
-    response = requests.post(Url.create_user_url, json=body)
+    body = UserBody.USER_BODY
+    response = requests.post(Url.CREATE_USER_URL, json=body)
     response_data = response.json()
     access_token = response_data.get("accessToken")
    
     yield body
 
     if access_token:
-        requests.delete(Url.delete_user_url, headers={'Authorization': f'{access_token}'})
+        requests.delete(Url.DELETE_USER_URL, headers={'Authorization': f'{access_token}'})

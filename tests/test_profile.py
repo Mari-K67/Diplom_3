@@ -3,7 +3,6 @@ import allure
 from pages.profile_page import ProfilePage
 from locators.profile_locators import ProfileLocators
 from data import Url
-#python -B -m pytest tests/test_profile.py
 
 class TestProfile:
     @allure.title('Переход в профиль по клику на «Личный кабинет»')
@@ -16,7 +15,7 @@ class TestProfile:
                         """):
             page.login_and_head_to_profile_page(create_user['email'], create_user['password'])
 
-        assert page.get_current_url() == Url.prifile_page_url
+        assert page.get_current_url() == Url.PRIFILE_PAGE_URL
 
     @allure.title('Переход в раздел «История заказов»')
     def test_head_oder_history_page(self, driver, create_user): 
@@ -31,7 +30,7 @@ class TestProfile:
         with allure.step('кликнуть на раздел «История заказов»'):
             page.click(ProfileLocators.oder_history_chapter)
 
-        assert page.get_current_url() == Url.oder_histiry_chapter_url
+        assert page.get_current_url() == Url.ODER_HISTIRY_CHAPTER_URL
     
     @allure.title('Выход из аккаунта')
     def test_logout(self, driver, create_user): 
@@ -46,4 +45,4 @@ class TestProfile:
         with allure.step('кликнуть на кнопку "Выход"'):
             page.logout()
 
-        assert page.get_current_url() == Url.login_page_url
+        assert page.get_current_url() == Url.LOGIN_PAGE_URL

@@ -4,8 +4,6 @@ from locators.order_list_locators import OrderListLocators
 from locators.basic_functionality_locators import BasicFunctionalityLocators
 from locators.profile_locators import ProfileLocators
 from pages.order_list_page import OrderListPage
-from data import Url
-#python -B -m pytest tests/test_order_list.py
 
 class TestOderList:
     @allure.title('Если кликнуть на заказ, откроется всплывающее окно с деталями')
